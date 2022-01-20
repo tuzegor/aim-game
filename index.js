@@ -39,21 +39,22 @@ function decreaseTime() {
     finishGame();
   } else {
     let current = --time;
-    if (current < 10) {
-      current = `0${current}`;
-    }
+
     setTime(current);
   }
 }
 
 function setTime(value) {
-  timeEl.innerHTML = `00:${value}`;
+  if (value < 10) {
+    timeEl.innerHTML = `00:0${value}`;
+  } else {
+    timeEl.innerHTML = `00:${value}`;
+  }
 }
 
 function createRandomCircle() {
   const circle = document.createElement('div');
   const size = getRandomNumber(10, 60);
-  console.log(size);
   const { width, height } = board.getBoundingClientRect();
   const x = getRandomNumber(0, width - size);
   const y = getRandomNumber(0, height - size);
