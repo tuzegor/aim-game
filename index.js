@@ -64,12 +64,17 @@ function createRandomCircle() {
   circle.style.height = `${size}px`;
   circle.style.top = `${y}px`;
   circle.style.top = `${x}px`;
+  circle.style.background = generateColor();
 
   board.append(circle);
 }
 
 function getRandomNumber(min, max) {
   return Math.round(Math.random() * (max - min) + min);
+}
+
+function generateColor() {
+  return '#' + Math.floor(Math.random() * 16777215).toString(16);
 }
 
 function finishGame() {
